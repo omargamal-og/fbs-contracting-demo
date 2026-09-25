@@ -1,0 +1,7 @@
+.stats-section { background:#d6b475; color:#151b17; }
+.stats-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+.stat { padding:clamp(36px,5vw,72px) clamp(18px,3vw,42px); border-inline-end:1px solid rgba(21,27,23,.22); }
+.stat:last-child { border-inline-end:0; }
+.stat strong { display:block; font-size:clamp(2.5rem,5vw,5.5rem); line-height:1; letter-spacing:-.06em; font-weight:700; }
+.stat span { display:block; margin-top:14px; max-width:150px; font-size:.82rem; line-height:1.45; color:rgba(21,27,23,.68); }
+@media(max-width:800px){ .stats-grid{grid-template-columns:repeat(2,1fr);} .stat:nth-child(2){border-inline-end:0;} .stat:nth-child(-n+2){border-bottom:1px solid rgba(21,27,23,.22);} }

@@ -1,0 +1,21 @@
+<header class="site-header" [class.scrolled]="scrolled()">
+  <a class="brand" href="#home" [attr.aria-label]="i18n.copy().brand.home" (click)="closeMenu()">
+    <span class="brand-mark">FBS</span><span class="brand-name">{{ i18n.copy().brand.company }}</span>
+  </a>
+  <nav class="desktop-nav" [attr.aria-label]="i18n.copy().nav.primaryAria">
+    <a href="#about">{{ i18n.copy().nav.about }}</a><a href="#capabilities">{{ i18n.copy().nav.capabilities }}</a>
+    <a href="#projects">{{ i18n.copy().nav.projects }}</a><a href="#footprint">{{ i18n.copy().nav.footprint }}</a><a href="#contact">{{ i18n.copy().nav.contact }}</a>
+  </nav>
+  <div class="header-actions">
+    <button class="language-switch" type="button" (click)="switchLanguage()"><span class="language-dot"></span>{{ i18n.copy().nav.language }}</button>
+    <a class="header-cta" href="#contact">{{ i18n.copy().nav.cta }} <span>↗</span></a>
+  </div>
+  <button class="menu-btn" type="button" [attr.aria-label]="i18n.copy().nav.menuAria" (click)="toggleMenu()"><span></span><span></span></button>
+  @if (menuOpen()) {
+    <nav class="mobile-nav" [attr.aria-label]="i18n.copy().nav.mobileAria">
+      <a href="#about" (click)="closeMenu()">{{ i18n.copy().nav.about }}</a><a href="#capabilities" (click)="closeMenu()">{{ i18n.copy().nav.capabilities }}</a>
+      <a href="#projects" (click)="closeMenu()">{{ i18n.copy().nav.projects }}</a><a href="#footprint" (click)="closeMenu()">{{ i18n.copy().nav.footprint }}</a>
+      <a href="#contact" (click)="closeMenu()">{{ i18n.copy().nav.contact }}</a><button class="mobile-language" type="button" (click)="switchLanguage()">{{ i18n.copy().nav.language }}</button>
+    </nav>
+  }
+</header>

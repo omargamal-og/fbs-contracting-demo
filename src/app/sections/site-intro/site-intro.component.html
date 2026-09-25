@@ -1,0 +1,25 @@
+<div class="site-intro" [class.leaving]="leaving()" role="presentation">
+  <div class="intro-grid" aria-hidden="true"></div>
+  <div class="intro-beam beam-a" aria-hidden="true"></div>
+  <div class="intro-beam beam-b" aria-hidden="true"></div>
+
+  <button class="skip" type="button" (click)="skip()">{{ i18n.copy().intro.skip }}</button>
+
+  <div class="intro-center">
+    <div class="monogram-wrap">
+      <span class="monogram">FBS</span>
+      <span class="monogram-line"></span>
+    </div>
+    <p class="intro-name">{{ i18n.copy().intro.company }}</p>
+    <p class="intro-message">{{ i18n.copy().intro.message }}</p>
+  </div>
+
+  <div class="intro-footer">
+    <span>{{ i18n.copy().intro.location }}</span>
+    <div class="progress-track"><span [style.width.%]="progress()"></span></div>
+    <strong>{{ progress().toString().padStart(3, '0') }}</strong>
+  </div>
+
+  <div class="wipe wipe-top" aria-hidden="true"></div>
+  <div class="wipe wipe-bottom" aria-hidden="true"></div>
+</div>

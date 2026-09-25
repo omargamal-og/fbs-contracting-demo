@@ -1,0 +1,62 @@
+:host { position: relative; z-index: 50; }
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 88px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding-inline: clamp(24px, 5vw, 72px);
+  color: #fff;
+  transition: .35s ease;
+}
+
+.site-header.scrolled {
+  height: 72px;
+  background: rgba(17, 23, 19, .93);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.09);
+}
+
+.brand { display: inline-flex; align-items: center; gap: 12px; justify-self: start; color: inherit; }
+.brand-mark { font-size: 1.25rem; font-weight: 800; letter-spacing: -.04em; }
+.brand-name { font-size: .7rem; font-weight: 700; letter-spacing: .22em; opacity: .82; }
+.desktop-nav { display: flex; align-items: center; gap: 30px; }
+.desktop-nav a { color: inherit; font-size: .86rem; opacity: .82; transition: .2s ease; white-space: nowrap; }
+.desktop-nav a:hover { opacity: 1; }
+.header-actions { justify-self: end; display:flex; align-items:center; gap:18px; }
+.header-cta { color: inherit; font-size: .84rem; border-bottom: 1px solid rgba(255,255,255,.5); padding-bottom: 6px; white-space:nowrap; }
+.header-cta span { margin-inline-start: 8px; }
+.language-switch,
+.mobile-language {
+  border:0;
+  background:transparent;
+  color:#fff;
+  cursor:pointer;
+  font:inherit;
+}
+.language-switch { display:flex; align-items:center; gap:8px; font-size:.75rem; opacity:.78; transition:.2s ease; }
+.language-switch:hover { opacity:1; }
+.language-dot { width:6px; height:6px; border-radius:50%; background:#d7b575; box-shadow:0 0 0 4px rgba(215,181,117,.12); }
+.menu-btn { display: none; justify-self: end; background: none; border: 0; padding: 10px; }
+.menu-btn span { display:block; width:24px; height:1px; background:#fff; margin:6px 0; }
+.mobile-nav { position: fixed; inset: 72px 0 auto 0; padding: 28px; background: #111713; display:grid; gap:18px; border-top:1px solid rgba(255,255,255,.08); }
+.mobile-nav a { color:#fff; font-size:1.3rem; }
+.mobile-language { justify-self:start; margin-top:10px; padding:11px 16px; border:1px solid rgba(255,255,255,.2); font-size:1rem; }
+
+:host-context(html[dir='rtl']) .brand-name { letter-spacing:.08em; }
+:host-context(html[dir='rtl']) .desktop-nav { direction:rtl; }
+:host-context(html[dir='rtl']) .header-actions { direction:rtl; }
+
+@media (max-width: 1120px) {
+  .desktop-nav { gap:20px; }
+  .header-cta { display:none; }
+}
+
+@media (max-width: 860px) {
+  .site-header { grid-template-columns: 1fr auto; }
+  .desktop-nav, .header-actions { display:none; }
+  .menu-btn { display:block; }
+}

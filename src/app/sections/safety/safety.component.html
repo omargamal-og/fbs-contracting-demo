@@ -1,0 +1,12 @@
+<section class="safety">
+  <div class="safety-image" aria-hidden="true"></div><div class="safety-shade"></div>
+  <div class="container safety-content reveal" appReveal>
+    <p class="eyebrow">{{ i18n.copy().safety.eyebrow }}</p>
+    <h2>{{ i18n.copy().safety.title }}<br><span>{{ i18n.copy().safety.titleAccent }}</span></h2>
+    <div class="pillars">
+      @for (pillar of i18n.copy().safety.pillars; track pillar; let i = $index) {
+        <div><strong>0{{ i + 1 }}</strong><span>{{ pillar }}</span></div>
+      }
+    </div>
+  </div>
+</section>

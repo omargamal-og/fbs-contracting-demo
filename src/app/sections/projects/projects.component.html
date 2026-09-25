@@ -1,0 +1,30 @@
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="projects-head reveal" appReveal>
+      <div><p class="eyebrow">{{ i18n.copy().projects.eyebrow }}</p><p class="section-number">04</p></div>
+      <div>
+        <h2>{{ i18n.copy().projects.title }} <span>{{ i18n.copy().projects.titleAccent }}</span></h2>
+        <div class="filters" [attr.aria-label]="i18n.copy().projects.filterAria">
+          @for (filter of filters; track filter) {
+            <button type="button" [class.active]="activeFilter() === filter" (click)="setFilter(filter)">{{ i18n.copy().projects.filters[filter] }}</button>
+          }
+        </div>
+      </div>
+    </div>
+    <div class="project-grid">
+      @for (project of projects(); track project.id; let i = $index) {
+        <article class="project-card reveal" appReveal [class.wide]="i % 3 === 0">
+          <div class="project-media">
+            <img [src]="project.image" [alt]="project.name[i18n.language()]" loading="lazy">
+            <span class="project-city">{{ i18n.copy().cities[project.city] }}</span>
+          </div>
+          <div class="project-copy">
+            <p>{{ project.eyebrow[i18n.language()] }}</p>
+            <h3>{{ project.name[i18n.language()] }}</h3>
+            <div class="project-meta"><span>{{ i18n.copy().categories[project.category] }}</span><span>{{ i18n.copy().projects.portfolio }}</span></div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

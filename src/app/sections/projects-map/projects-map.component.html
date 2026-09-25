@@ -1,0 +1,33 @@
+<section class="section footprint" id="footprint">
+  <div class="container footprint-grid reveal" appReveal>
+    <div class="map-copy">
+      <p class="eyebrow">{{ i18n.copy().footprint.eyebrow }}</p><p class="section-number">05</p>
+      <h2>{{ i18n.copy().footprint.title }} <span>{{ i18n.copy().footprint.titleAccent }}</span></h2>
+      <p class="intro">{{ i18n.copy().footprint.intro }}</p>
+      <div class="city-panel" aria-live="polite">
+        <p class="city-label">{{ i18n.copy().footprint.selectedCity }}</p>
+        <h3>{{ i18n.copy().cities[selectedCity()] }}</h3>
+        <p class="project-count">{{ projectCountLabel() }}</p>
+        <ul>
+          @for (project of cityProjects(); track project.id) {
+            <li><span>{{ project.name[i18n.language()] }}</span><small>{{ i18n.copy().categories[project.category] }}</small></li>
+          }
+        </ul>
+      </div>
+    </div>
+    <div #mapStage class="map-stage" [class.animate]="mapVisible()">
+      <div class="map-glow"></div>
+      <svg class="saudi-map" viewBox="0 0 600 600" role="img" [attr.aria-label]="i18n.copy().footprint.mapAria">
+        <path class="map-outline" d="M175 100 L290 78 L355 112 L405 150 L486 168 L520 228 L500 288 L535 338 L492 397 L454 420 L438 489 L362 520 L306 492 L247 520 L210 486 L155 452 L126 390 L95 332 L117 276 L95 220 L126 165 Z" />
+        <path class="map-line line-1" d="M164 366 C238 330 306 302 372 294" /><path class="map-line line-2" d="M164 366 C188 286 188 220 203 174" /><path class="map-line line-3" d="M372 294 C304 340 244 362 215 354" />
+      </svg>
+      @for (pin of pins; track pin.city; let i = $index) {
+        <button class="map-pin" type="button" [class.active]="selectedCity() === pin.city" [style.left.%]="pin.x" [style.top.%]="pin.y"
+          [style.--pin-delay]="(0.45 + i * 0.14) + 's'" (click)="selectCity(pin.city)"
+          [attr.aria-label]="i18n.copy().footprint.showProjectsIn + ' ' + i18n.copy().cities[pin.city]">
+          <span class="pulse"></span><span class="dot"></span><span class="pin-label">{{ i18n.copy().cities[pin.city] }}</span>
+        </button>
+      }
+    </div>
+  </div>
+</section>

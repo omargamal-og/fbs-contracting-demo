@@ -1,0 +1,7 @@
+<section class="stats-section">
+  <div class="container stats-grid reveal" appReveal>
+    @for (stat of i18n.copy().stats.items; track stat.label) {
+      <div class="stat"><strong>{{ stat.value }}</strong><span>{{ stat.label }}</span></div>
+    }
+  </div>
+</section>

@@ -1,0 +1,33 @@
+<section class="hero" id="home" (pointermove)="onPointerMove($event)" [style.--mx]="mouseX() + '%'" [style.--my]="mouseY() + '%'">
+  <div class="hero-media" aria-hidden="true">
+    @for (slide of slides(); track slide.title; let i = $index) { <div class="hero-slide" [class.active]="activeSlide() === i" [style.background-image]="'url(' + slide.image + ')'" ></div> }
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div><div class="hero-grid" aria-hidden="true"></div><div class="hero-spotlight" aria-hidden="true"></div><div class="gold-axis" aria-hidden="true"></div>
+  <div class="hero-content container">
+    <div class="hero-topline"><p class="eyebrow hero-kicker">{{ i18n.copy().hero.kicker }}</p><p class="hero-code">{{ i18n.copy().hero.code }}</p></div>
+    <div class="hero-main">
+      <div class="headline-wrap">
+        <p class="hero-overline">{{ i18n.copy().hero.overline }}</p>
+        <h1><span class="line line-one">{{ i18n.copy().hero.line1 }}</span><span class="line line-two">{{ i18n.copy().hero.line2 }} <em>{{ i18n.copy().hero.line2Accent }}</em></span></h1>
+        <p class="hero-lead">{{ i18n.copy().hero.lead }}</p>
+        <div class="hero-actions"><a class="primary-cta" href="#projects">{{ i18n.copy().hero.projectsCta }} <span>↗</span></a><a class="secondary-cta" href="#capabilities">{{ i18n.copy().hero.capabilitiesCta }} <span>↓</span></a></div>
+      </div>
+      <aside class="project-focus" aria-live="polite">
+        <div class="focus-index"><span>{{ i18n.copy().hero.projectFocus }}</span><strong>0{{ activeSlide() + 1 }}</strong></div><div class="focus-line"></div>
+        <p>{{ slides()[activeSlide()].sector }}</p><h2>{{ slides()[activeSlide()].title }}</h2><span class="focus-location">{{ slides()[activeSlide()].location }}</span>
+        <div class="slide-nav" [attr.aria-label]="i18n.copy().hero.heroSlidesAria">
+          @for (slide of slides(); track slide.title; let i = $index) { <button type="button" [class.active]="activeSlide() === i" (click)="selectSlide(i)" [attr.aria-label]="i18n.copy().hero.showSlideAria + ' ' + (i + 1)"><span></span></button> }
+        </div>
+      </aside>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-facts">@for (fact of i18n.copy().hero.facts; track fact; let i = $index) { <div><small>0{{ i + 1 }}</small><span>{{ fact }}</span></div> }</div>
+      <a class="scroll-cue" href="#about" [attr.aria-label]="i18n.copy().hero.scrollAria"><span>{{ i18n.copy().hero.scroll }}</span><i>↓</i></a>
+    </div>
+  </div>
+  <div class="edge-label left">{{ i18n.copy().hero.edgeLeft }}</div><div class="edge-label right">{{ i18n.copy().hero.edgeRight }}</div>
+</section>
+<div class="manifesto-band" aria-hidden="true"><div class="manifesto-track">
+  @for (item of i18n.copy().hero.manifesto; track item) { <span>{{ item }}</span><i>◆</i> }
+  @for (item of i18n.copy().hero.manifesto; track item) { <span>{{ item }}</span><i>◆</i> }
+</div></div>

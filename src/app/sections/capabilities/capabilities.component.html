@@ -1,0 +1,17 @@
+<section class="section capabilities" id="capabilities">
+  <div class="container">
+    <div class="section-head reveal" appReveal>
+      <div><p class="eyebrow">{{ i18n.copy().capabilities.eyebrow }}</p><p class="section-number">03</p></div>
+      <h2>{{ i18n.copy().capabilities.title }} <span>{{ i18n.copy().capabilities.titleAccent }}</span></h2>
+    </div>
+    <div class="cap-grid">
+      @for (item of items; track item.index; let i = $index) {
+        <article class="cap-card reveal" appReveal>
+          <img [src]="item.image" [alt]="i18n.copy().capabilities.items[i] + ' — ' + i18n.copy().capabilities.altSuffix" loading="lazy">
+          <div class="cap-overlay"></div><span class="cap-index">{{ item.index }}</span>
+          <div class="cap-title"><h3>{{ i18n.copy().capabilities.items[i] }}</h3><span>↗</span></div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

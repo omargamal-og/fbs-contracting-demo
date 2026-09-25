@@ -1,0 +1,17 @@
+<section class="section contact" id="contact">
+  <div class="container contact-grid reveal" appReveal>
+    <div class="contact-copy">
+      <p class="eyebrow">{{ i18n.copy().contact.eyebrow }}</p><p class="section-number">06</p>
+      <h2>{{ i18n.copy().contact.title }}</h2><p>{{ i18n.copy().contact.lead }}</p>
+      <div class="contact-details"><span>{{ i18n.copy().contact.location }}</span><span>{{ i18n.copy().contact.address }}</span></div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <label><span>{{ i18n.copy().contact.fields.name }}</span><input type="text" formControlName="name" [placeholder]="i18n.copy().contact.placeholders.name"></label>
+      <label><span>{{ i18n.copy().contact.fields.email }}</span><input type="email" formControlName="email" [placeholder]="i18n.copy().contact.placeholders.email"></label>
+      <label><span>{{ i18n.copy().contact.fields.company }}</span><input type="text" formControlName="company" [placeholder]="i18n.copy().contact.placeholders.company"></label>
+      <label><span>{{ i18n.copy().contact.fields.message }}</span><textarea rows="4" formControlName="message" [placeholder]="i18n.copy().contact.placeholders.message"></textarea></label>
+      <button class="submit-btn" type="submit">{{ i18n.copy().contact.submit }} <span>↗</span></button>
+      @if (submitted()) { <p class="success">{{ i18n.copy().contact.success }}</p> }
+    </form>
+  </div>
+</section>
